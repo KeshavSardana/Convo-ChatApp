@@ -14,10 +14,6 @@ connectDB();
 const PORT = process.env.PORT || 5000;
 const app = express();
 
-app.use(express.json());
-app.use(cookieParser());
-app.use(cors());
-
 // --------------------------deployment------------------------------
 
 const __dirname1 = path.resolve();
@@ -37,6 +33,10 @@ if (process.env.NODE_ENV == "production") {
 
 // --------------------------deployment------------------------------
 
+app.use(express.json());
+app.use(cookieParser());
+app.use(cors());
+
 app.get("/", (req, res) => {
   res.send("API is running");
 });
@@ -54,7 +54,7 @@ const server = app.listen(PORT, console.log(`Server started on Port ${PORT}`));
 const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
-    origin: "http://localhost:3000",
+    origin: "*",
   },
 });
 
