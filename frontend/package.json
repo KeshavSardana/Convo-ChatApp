@@ -27,6 +27,7 @@
   "scripts": {
     "start": "react-scripts ",
     "build": "react-scripts ",
+    "postinstall": "ng build --aot --prod",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
