@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node backend/server.js",
     "server": "nodemon backend/server.js",
-    "postinstall": "ng build --aot --prod",
     "build": "npm install  && npm install  --prefix frontend && npm run build --prefix frontend"
   },
   "author": "Keshav Sardana",
