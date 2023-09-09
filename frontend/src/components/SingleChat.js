@@ -17,7 +17,7 @@ import io from "socket.io-client";
 import Lottie from "react-lottie";
 import animationData from "../animations/typing.json";
 
-const ENDPOINT = "*"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
+const ENDPOINT = "https://convo-chat-app-using-mern-stach-and.onrender.com/"; // "https://talk-a-tive.herokuapp.com"; -> After deployment
 var socket, selectedChatCompare;
 
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
@@ -107,15 +107,15 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
     }
   };
 
-  // useEffect(() => {
-  //   socket = io(ENDPOINT);
-  //   socket.emit("setup", user);
-  //   socket.on("connected", () => setSocketConnected(true));
-  //   socket.on("typing", () => setIsTyping(true));
-  //   socket.on("stop typing", () => setIsTyping(false));
+  useEffect(() => {
+    socket = io();
+    socket.emit("setup", user);
+    socket.on("connected", () => setSocketConnected(true));
+    socket.on("typing", () => setIsTyping(true));
+    socket.on("stop typing", () => setIsTyping(false));
 
-  //   // eslint-disable-next-line
-  // }, []);
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     fetchMessages();
