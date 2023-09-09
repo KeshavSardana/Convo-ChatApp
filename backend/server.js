@@ -35,7 +35,11 @@ if (process.env.NODE_ENV == "production") {
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors());
+app.use(
+  cors({
+    allow: "*",
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("API is running");
@@ -55,6 +59,8 @@ const io = require("socket.io")(server, {
   pingTimeout: 60000,
   cors: {
     origin: "*",
+    methods: ["GET", "POST", "PUT"],
+    credentials: true,
   },
 });
 
